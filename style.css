@@ -95,8 +95,10 @@ section {
 
 .heading {
     position: relative;
+    display: block;
+    width: fit-content;
+    margin: 0 auto 3rem;
     font-size: 5rem;
-    margin-bottom: 3rem;
     text-align: center;
 }
 
@@ -518,12 +520,6 @@ section {
     background: var(--bg-color);
 }
 
-.skills h2 {
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 .skills .skills-row {
     display: flex;
     flex-wrap: wrap;
@@ -632,6 +628,14 @@ section {
 
 .skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span {
     width: 78%;
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(5) .bar span {
+    width: 65%;
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(5) .bar span {
+    width: 70%;
 }
 
 .certifications {
@@ -747,12 +751,6 @@ section {
     min-height: auto;
     padding-bottom: 7rem;
     background: var(--bg-color);
-}
-
-.contact h2 {
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 .contact form {
