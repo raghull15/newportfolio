@@ -1,364 +1,561 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Dhanush Kumar — Software Developer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header class="header">
-        <a href="#" class="logo">Portfolio<span class="animate" style="--i:1;"></span></a>
-        <div class="bx bx-menu" id="menu-icon"><span class="animate" style="--i:2;"></span></div>
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#certifications">Certifications</a>
-            <span class="active-nav"></span>
-            <span class="animate" style="--i:2;"> </span>
-        </nav>
-    </header>
-    <section class="home show-animate" id="home">
-        <div class="home-content">
-            <h1>Hi, I'm <span>Dhanush Kumar</span><span class="animate" style="--i:2;"></span></h1>
-            <div class="text-animate">
-                <h3>Software Developer & App Builder</h3>
-                <span class="animate" style="--i:3;"></span>
+
+    <!-- CURSOR -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- PARTICLES -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- ============================================================
+         NAVBAR
+    ============================================================ -->
+    <nav id="navbar">
+        <a href="#home" class="nav-logo">DK<span>.</span></a>
+
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#certifications" class="nav-link">Certifications</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <div class="toggle-thumb">
+                    <i class="fa-solid fa-moon" id="themeIconDark"></i>
+                    <i class="fa-solid fa-sun" id="themeIconLight" style="display:none"></i>
+                </div>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></button>
+        <a href="#home" class="mobile-link">Home</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#experience" class="mobile-link">Experience</a>
+        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="#skills" class="mobile-link">Skills</a>
+        <a href="#certifications" class="mobile-link">Certifications</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section id="home" class="section-hero">
+        <div class="hero-inner">
+
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Available for opportunities
             </div>
-            <p>Versatile Software Developer and MCA candidate with end-to-end expertise spanning mobile development
-                (Flutter), full-stack web engineering (React, Node.js, Flask), cloud infrastructure (AWS, Docker),
-                and AI integration (RAG, LLMs). I build production-grade systems — from Figma prototype to deployed
-                application — with clean, maintainable code and scalable architecture. Passionate about solving
-                real-world problems through technology that genuinely makes an impact.
-                <span class="animate" style="--i:4;"></span>
+
+            <h1 class="hero-name">Dhanush Kumar</h1>
+
+            <div class="hero-role">
+                I build&nbsp;<span class="typed-text" id="typed"></span><span class="cursor-blink"></span>
+            </div>
+
+            <p class="hero-desc">
+                Versatile Software Developer and MCA candidate with end-to-end expertise spanning mobile development
+                (Flutter), full-stack web engineering, cloud infrastructure (AWS), and AI integration (RAG, LLMs). From
+                Figma prototype to deployed application — clean, scalable architecture.
             </p>
-            <div class="btn-box">
-                <a href="#contact" class="btn">Hire Me</a>
+
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Hire Me
+                </a>
                 <a href="https://drive.google.com/file/d/1xRUhzAM0GK-WcbGeJm1gC9GVCRMBuV1b/view?usp=sharing"
-                    class="btn">Download CV</a>
+                    target="_blank" rel="noopener" class="btn-outline">
+                    <i class="fa-solid fa-download"></i> Download CV
+                </a>
             </div>
-        </div>
-        <div class="home-sci">
-            <a href="https://www.instagram.com/dhanushh15" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/Dhanush Kumar" target="_blank"><i
-                    class="fa-brands fa-linkedin"></i></a>
 
-            <span class="animate" style="--i:6;"></span>
-        </div>
-        <div class="home-imgHover"></div>
-        <span class="animate home-img" style="--i:7;"></span>
-    </section>
-    <section class="about" id="about">
-        <h2 class="heading">About <span>Me</span><span class="animate scroll" style="--i:1;"></span></h2>
-        <div class="about-img">
-            <img src="d.jpg" alt="image">
-            <span class="box-spin"></span>
-            <span class="animate scroll" style="--i:1;"></span>
-        </div>
-        <div class="about-content">
-            <h3>Hi there!<span class="animate scroll" style="--i:3;"></span></h3>
-            <p>I'm Dhanush Kumar — a Software Developer and MCA candidate with professional experience across
-                Flutter mobile development, full-stack web engineering, and AI-powered application platforms.
-                I've interned as a Flutter Developer at Fellow Founder, building cross-platform mobile apps
-                with Firebase and REST APIs, and as a Software Developer at KLoop, delivering full-stack web
-                features in an Agile environment. My projects span RAG-based AI chatbots, blockchain distribution
-                systems, and community resource platforms — all built from design through deployment.
-                I'm proficient in Dart, Python, JavaScript, and ReactJS, with hands-on expertise in AWS, Docker,
-                and CI/CD pipelines. I write clean, scalable code and thrive in collaborative team settings
-                where real-world impact is the goal.
-                <span class="animate scroll" style="--i:4;"></span>
-            </p>
-            <div class="btn-box btns">
-                <a href="#contact" class="btn">Contact Me</a>
-                <span class="animate scroll" style="--i:5;"></span>
+            <div class="hero-socials">
+                <a href="https://www.linkedin.com/in/dhanushkumar" target="_blank" rel="noopener" class="social-link">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.instagram.com/dhanushh15" target="_blank" rel="noopener" class="social-link">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="mailto:dhanushkumarr1508@gmail.com" class="social-link">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="tel:+919940282826" class="social-link">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
             </div>
+
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>scroll</span>
         </div>
     </section>
-    <section class="experience" id="experience">
-        <h2 class="heading">My <span>Experience</span><span class="animate scroll" style="--i:1;"></span></h2>
-        <div class="experience-row">
-            <div class="experience-column">
-                <div class="experience-box">
-                    <div class="experience-content">
-                        <div class="content">
-                            <div class="year"><i class='bx bxs-calendar'></i> Dec 2025 – Mar 2026</div>
-                            <h3>Software Developer Intern - KLoop, Chennai</h3>
-                            <p>Developed full-stack web applications, building responsive frontend interfaces and
-                                implementing backend APIs consumed across platforms. Designed high-fidelity prototypes
-                                and created reusable UI components to support scalable, efficient development workflows.
-                                Collaborated in an Agile team environment, contributing to production-level features
-                                and participating in sprint planning and code reviews.</p>
-                        </div>
-                        <span class="animate scroll" style="--i:2;"></span>
+
+    <!-- ============================================================
+         ABOUT
+    ============================================================ -->
+    <section id="about">
+        <div class="section-label reveal">About Me</div>
+        <h2 class="section-title reveal reveal-d1">Crafting digital experiences<br>with purpose &amp; precision.</h2>
+
+        <div class="about-grid">
+            <div class="about-img-wrap reveal reveal-d2">
+                <div class="about-img-container">
+                    <div class="img-glow-ring"></div>
+                    <img src="d.jpg" alt="Dhanush Kumar"
+                        onerror="this.style.display='none';document.getElementById('imgFallback').style.display='flex';">
+                    <div class="about-img-placeholder" id="imgFallback">
+                        <i class="fa-regular fa-user"></i>
                     </div>
-
-                    <div class="experience-content">
-                        <div class="content">
-                            <div class="year"><i class='bx bxs-calendar'></i> Mar 2025 – Aug 2025</div>
-                            <h3>Flutter Developer Intern - Fellow Founder, Chennai</h3>
-                            <p>Completed a 6-month internship focused on cross-platform mobile app development. Built
-                                and maintained Flutter applications for multiple client projects. Gained experience
-                                across the full app development lifecycle from design to deployment. Optimized app
-                                performance and integrated REST APIs for seamless data synchronization. Worked on
-                                state management solutions like Provider and Bloc to create scalable codebases.
-                                Participated in code reviews and utilized Git for collaborative version control.</p>
-                        </div>
-                        <span class="animate scroll" style="--i:3;"></span>
+                    <div class="img-tag">
+                        <span class="tag-value">2+</span>
+                        <span class="tag-label">Years Exp.</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="projects" id="projects">
-        <h2 class="heading">My <span>Projects</span><span class="animate scroll" style="--i:1;"></span></h2>
-        <div class="projects-row">
-            <div class="projects-column">
-                <div class="projects-box">
 
-                    <div class="projects-content" style="--i:2;">
-                        <h3 class="project-title">ShareNear — Community Resource Sharing Platform </h3>
-                        <p class="project-description">A resource donation and discovery platform connecting donors with
-                            shelters and individuals in need.
-                            Includes an SOS feature for urgent food or resource requests and emergency support.
-                            An admin dashboard ensures monitoring, verification, and platform safety while reducing food
-                            waste.</p>
+            <div class="about-text">
+                <h3 class="reveal reveal-d2">Hi, I'm Dhanush 👋</h3>
+                <p class="reveal reveal-d3">
+                    I'm a Software Developer and MCA candidate with professional experience across Flutter mobile
+                    development, full-stack web engineering, and AI-powered application platforms. Interned as a Flutter
+                    Developer at Fellow Founder and as a Software Developer at KLoop.
+                </p>
+                <p class="reveal reveal-d4">
+                    My projects span RAG-based AI chatbots, blockchain distribution systems, and community resource
+                    platforms — all built from design through deployment. I thrive in collaborative team settings where
+                    real-world impact is the goal.
+                </p>
+                <div class="about-facts reveal reveal-d5">
+                    <div class="fact-item">
+                        <div class="fact-value">5+</div>
+                        <div class="fact-label">Projects Shipped</div>
                     </div>
-                    <div class="projects-content" style="--i:3;">
-                        <h3 class="project-title">Agentic Loop — Document & Database-Aware AI Agent Platform </h3>
-                        <p class="project-description"> A customizable AI-powered chatbot generator enabling
-                            individuals,
-                            businesses, and organizations to create chatbots
-                            using their own data sources such as PDFs, links, spreadsheets, and documents.</p>
+                    <div class="fact-item">
+                        <div class="fact-value">2</div>
+                        <div class="fact-label">Internships</div>
                     </div>
-
-                    <div class="projects-content" style="--i:4;">
-                        <h3 class="project-title">AI Contract Generator for Legal Documents</h3>
-                        <p class="project-description">An intelligent legal document generation tool that creates
-                            customized contracts based on user inputs with AI-powered template customization.</p>
+                    <div class="fact-item">
+                        <div class="fact-value">6+</div>
+                        <div class="fact-label">Certifications</div>
                     </div>
-                    <div class="projects-content" style="--i:5;">
-                        <h3 class="project-title">RationChain — Blockchain Based Ration Distribution System</h3>
-                        <p class="project-description">A secure, immutable system for government ration distribution
-                            using a custom Python blockchain with cryptographic
-                            hashing, identity verification, double-distribution prevention, and a real-time analytics
-                            dashboard.</p>
+                    <div class="fact-item">
+                        <div class="fact-value">MCA</div>
+                        <div class="fact-label">Pursuing</div>
                     </div>
-                    <div class="projects-content" style="--i:6;">
-                        <h3 class="project-title">Shoplane E-commerce Mobile Application</h3>
-                        <p class="project-description">Built a full-stack e-commerce mobile application using Flutter
-                            and Firebase, featuring an admin dashboard for managing products, orders, and users, with
-                            Cloudinary integration for image handling and real-time updates via Firebase.
-                        </p>
-                    </div>
-
-
-
+                </div>
+                <div class="reveal reveal-d6" style="margin-top:2rem">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fa-solid fa-arrow-right"></i> Let's Connect
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ============================================================
+         EXPERIENCE
+    ============================================================ -->
+    <section id="experience" class="section-alt">
+        <div class="section-label reveal">Work History</div>
+        <h2 class="section-title reveal reveal-d1">Where I've<br>built things.</h2>
 
-    <section class="skills" id="skills">
-        <h2 class="heading">My <span>Skills</span><span class="animate scroll" style="--i:1;"></span></h2>
-        <div class="skills-row">
-            <div class="skills-column">
-                <h3 class="title">Technical Skills<span class="animate scroll" style="--i:2;"></span></h3>
-                <div class="skills-box">
-                    <div class="skills-content">
-                        <div class="progress">
-                            <h3>HTML and CSS <span>70%</span></h3>
-                            <div class="bar"><span></span></div>
+        <div class="experience-grid">
+            <div class="exp-card reveal reveal-d2">
+                <i class="fa-solid fa-code exp-icon"></i>
+                <div class="exp-period"><i class="fa-regular fa-calendar"></i> Dec 2025 – Mar 2026</div>
+                <div class="exp-role">Software Developer Intern</div>
+                <div class="exp-company">KLoop · Chennai, India</div>
+                <p class="exp-desc">
+                    Developed full-stack web applications, building responsive frontend interfaces and implementing
+                    backend APIs. Designed high-fidelity prototypes and reusable UI components. Contributed to
+                    production-level features in sprint planning and code reviews within an Agile team.
+                </p>
+                <div class="exp-tags">
+                    <span>React</span><span>Node.js</span><span>Figma</span><span>Agile</span>
+                </div>
+            </div>
+
+            <div class="exp-card reveal reveal-d3">
+                <i class="fa-solid fa-mobile-screen exp-icon"></i>
+                <div class="exp-period"><i class="fa-regular fa-calendar"></i> Mar 2025 – Aug 2025</div>
+                <div class="exp-role">Flutter Developer Intern</div>
+                <div class="exp-company">Fellow Founder · Chennai, India</div>
+                <p class="exp-desc">
+                    Completed a 6-month internship building cross-platform mobile applications for multiple client
+                    projects. Implemented state management (Provider, Bloc), integrated REST APIs, optimized
+                    performance, and participated in code reviews using Git for version control.
+                </p>
+                <div class="exp-tags">
+                    <span>Flutter</span><span>Dart</span><span>Firebase</span><span>REST APIs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         PROJECTS
+    ============================================================ -->
+    <section id="projects">
+        <div class="section-label reveal">Portfolio</div>
+        <h2 class="section-title reveal reveal-d1">Things I've<br>shipped.</h2>
+
+        <div class="projects-grid">
+            <div class="project-card reveal reveal-d1">
+                <div class="project-card-top">
+                    <div class="project-num">01</div>
+                    <div class="project-tag">Web · Community</div>
+                    <div class="project-name">ShareNear — Community Resource Sharing Platform</div>
+                </div>
+                <p class="project-desc">A resource donation and discovery platform connecting donors with shelters.
+                    Includes SOS feature for urgent requests and an admin dashboard for monitoring, verification, and
+                    platform safety.</p>
+                <div class="project-card-bottom">
+                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View
+                        Project</button>
+                </div>
+            </div>
+
+            <div class="project-card reveal reveal-d2">
+                <div class="project-card-top">
+                    <div class="project-num">02</div>
+                    <div class="project-tag">AI · Platform</div>
+                    <div class="project-name">Agentic Loop — Document &amp; Database-Aware AI Agent</div>
+                </div>
+                <p class="project-desc">A customizable AI-powered chatbot generator enabling businesses to create
+                    chatbots using their own data sources — PDFs, links, spreadsheets, and documents.</p>
+                <div class="project-card-bottom">
+                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View
+                        Project</button>
+                </div>
+            </div>
+
+            <div class="project-card reveal reveal-d3">
+                <div class="project-card-top">
+                    <div class="project-num">03</div>
+                    <div class="project-tag">AI · Legal</div>
+                    <div class="project-name">AI Contract Generator for Legal Documents</div>
+                </div>
+                <p class="project-desc">An intelligent legal document generation tool that creates customized contracts
+                    based on user inputs with AI-powered template customization and smart clause suggestions.</p>
+                <div class="project-card-bottom">
+                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View
+                        Project</button>
+                </div>
+            </div>
+
+            <div class="project-card reveal reveal-d4">
+                <div class="project-card-top">
+                    <div class="project-num">04</div>
+                    <div class="project-tag">Blockchain · GovTech</div>
+                    <div class="project-name">RationChain — Blockchain Ration Distribution System</div>
+                </div>
+                <p class="project-desc">A secure, immutable system for government ration distribution using a custom
+                    Python blockchain with cryptographic hashing, identity verification, and a real-time analytics
+                    dashboard.</p>
+                <div class="project-card-bottom">
+                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View
+                        Project</button>
+                </div>
+            </div>
+
+            <div class="project-card reveal reveal-d5">
+                <div class="project-card-top">
+                    <div class="project-num">05</div>
+                    <div class="project-tag">Mobile · E-Commerce</div>
+                    <div class="project-name">Shoplane — Full-Stack E-Commerce Mobile App</div>
+                </div>
+                <p class="project-desc">Full-stack e-commerce mobile app using Flutter and Firebase with admin
+                    dashboard, Cloudinary integration for image handling, and real-time order updates.</p>
+                <div class="project-card-bottom">
+                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View
+                        Project</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SKILLS
+    ============================================================ -->
+    <section id="skills" class="section-alt">
+        <div class="section-label reveal">Expertise</div>
+        <h2 class="section-title reveal reveal-d1">My technical<br>toolkit.</h2>
+
+        <div class="skills-layout">
+            <div class="skills-pills-col">
+                <p class="skills-group-label reveal reveal-d2">Languages &amp; Frameworks</p>
+                <div class="pills-grid reveal reveal-d3">
+                    <span class="pill">Dart</span><span class="pill">Python</span>
+                    <span class="pill">JavaScript</span><span class="pill">TypeScript</span>
+                    <span class="pill">HTML5</span><span class="pill">CSS3</span>
+                    <span class="pill">Flutter</span><span class="pill">ReactJS</span>
+                    <span class="pill">Node.js</span><span class="pill">Flask</span>
+                    <span class="pill">MySQL</span>
+                </div>
+                <p class="skills-group-label reveal reveal-d4">Cloud &amp; DevOps</p>
+                <div class="pills-grid reveal reveal-d5">
+                    <span class="pill">AWS</span><span class="pill">Docker</span>
+                    <span class="pill">CI/CD</span><span class="pill">Firebase</span>
+                    <span class="pill">Git / GitHub</span><span class="pill">REST APIs</span>
+                </div>
+                <p class="skills-group-label reveal reveal-d5">AI &amp; Specialties</p>
+                <div class="pills-grid reveal reveal-d6">
+                    <span class="pill">RAG Systems</span><span class="pill">LLM Integration</span>
+                    <span class="pill">State Management</span><span class="pill">Figma / UI Design</span>
+                    <span class="pill">Agile / Scrum</span><span class="pill">Blockchain</span>
+                </div>
+            </div>
+
+            <div class="skills-bars-col">
+                <p class="skills-group-label reveal reveal-d2">Proficiency Levels</p>
+                <div class="skill-bars reveal reveal-d3">
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Flutter / Dart</span>
+                            <span class="skill-bar-pct">78%</span>
                         </div>
-                        <div class="progress">
-                            <h3>ReactJS <span>60%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                        <div class="progress">
-                            <h3>Dart <span>60%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                        <div class="progress">
-                            <h3>Python <span>68%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                        <div class="progress">
-                            <h3>MySQL <span>65%</span></h3>
-                            <div class="bar"><span></span></div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="78"></div>
                         </div>
                     </div>
-                    <span class="animate scroll" style="--i:3;"></span>
-                </div>
-            </div>
-            <div class="skills-column">
-                <h3 class="title">Professional Skills<span class="animate scroll" style="--i:5;"></span></h3>
-                <div class="skills-box">
-                    <div class="skills-content">
-                        <div class="progress">
-                            <h3>Web Development <span>70%</span></h3>
-                            <div class="bar"><span></span></div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">HTML &amp; CSS</span>
+                            <span class="skill-bar-pct">70%</span>
                         </div>
-                        <div class="progress">
-                            <h3>Data Management <span>68%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                        <div class="progress">
-                            <h3>Project Management <span>55%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                        <div class="progress">
-                            <h3>Flutter<span>78%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                        <div class="progress">
-                            <h3>Cloud Service<span>70%</span></h3>
-                            <div class="bar"><span></span></div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="70"></div>
                         </div>
                     </div>
-                    <span class="animate scroll" style="--i:6;"></span>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="certifications" id="certifications">
-        <h2 class="heading">My <span>Certifications</span><span class="animate scroll" style="--i:1;"></span></h2>
-
-        <div class="certifications-container">
-            <div class="certification-card" style="--i:2;">
-                <div class="cert-icon">
-                    <i class='bx bxl-flutter'></i>
-                </div>
-                <h3>Flutter Development</h3>
-                <p class="cert-provider"> Fellow Founder</p>
-                <div class="cert-badge">
-                    <i class='bx bx-badge-check'></i>
-                </div>
-            </div>
-
-            <div class="certification-card" style="--i:3;">
-                <div class="cert-icon">
-                    <i class='bx bxl-react'></i>
-                </div>
-                <h3>ReactJS Development</h3>
-                <p class="cert-provider">Cambtech</p>
-                <div class="cert-badge">
-                    <i class='bx bx-badge-check'></i>
-                </div>
-            </div>
-
-            <div class="certification-card" style="--i:4;">
-                <div class="cert-icon">
-                    <i class='bx bxl-aws'></i>
-                </div>
-                <h3>AWS</h3>
-                <p class="cert-provider">Kodekloud</p>
-                <div class="cert-badge">
-                    <i class='bx bx-badge-check'></i>
-                </div>
-            </div>
-
-            <div class="certification-card" style="--i:5;">
-                <div class="cert-icon">
-                    <i class='bx bxl-python'></i>
-                </div>
-                <h3>Python</h3>
-                <p class="cert-provider">IIT Bombay</p>
-                <div class="cert-badge">
-                    <i class='bx bx-badge-check'></i>
-                </div>
-            </div>
-
-            <div class="certification-card" style="--i:6;">
-                <div class="cert-icon">
-                    <i class='bx bx-layout'></i>
-                </div>
-                <h3>UI/UX Design</h3>
-                <p class="cert-provider">TVS</p>
-                <div class="cert-badge">
-                    <i class='bx bx-badge-check'></i>
-                </div>
-            </div>
-
-            <div class="certification-card" style="--i:7;">
-                <div class="cert-icon">
-                    <i class='bx bx-bar-chart'></i>
-                </div>
-                <h3>Power BI</h3>
-                <p class="cert-provider">Imarticus Learning</p>
-                <div class="cert-badge">
-                    <i class='bx bx-badge-check'></i>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">ReactJS</span>
+                            <span class="skill-bar-pct">60%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="60"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Python</span>
+                            <span class="skill-bar-pct">68%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="68"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">AWS / Cloud</span>
+                            <span class="skill-bar-pct">70%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="70"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">MySQL</span>
+                            <span class="skill-bar-pct">65%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="65"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me</span><span class="animate scroll" style="--i:1;"></span></h2>
+    <!-- ============================================================
+         CERTIFICATIONS
+    ============================================================ -->
+    <section id="certifications">
+        <div class="section-label reveal">Credentials</div>
+        <h2 class="section-title reveal reveal-d1">Certified &amp;<br>recognized.</h2>
 
-        <form action="https://formsubmit.co/dhanushkumarr1508@gmail.com" method="POST">
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="text" placeholder="Full Name" required name="Full_Name">
-                    <span class="focus"></span>
+        <div class="certs-grid">
+            <div class="cert-card reveal reveal-d1">
+                <div class="cert-icon-wrap"><i class="fa-solid fa-mobile-screen"></i></div>
+                <div class="cert-info">
+                    <div class="cert-title">Flutter Development</div>
+                    <div class="cert-from">Fellow Founder</div>
                 </div>
-                <div class="input-field">
-                    <input type="email" placeholder="Email" required name="Email">
-                    <span class="focus"></span>
+                <div class="cert-check"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <div class="cert-card reveal reveal-d2">
+                <div class="cert-icon-wrap"><i class="fa-brands fa-react"></i></div>
+                <div class="cert-info">
+                    <div class="cert-title">ReactJS Development</div>
+                    <div class="cert-from">Cambtech</div>
                 </div>
-                <span class="animate scroll" style="--i:2;"></span>
+                <div class="cert-check"><i class="fa-solid fa-check"></i></div>
             </div>
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="number" placeholder="Mobile Number" required name="Mobile_Number">
-                    <span class="focus"></span>
+            <div class="cert-card reveal reveal-d3">
+                <div class="cert-icon-wrap"><i class="fa-brands fa-aws"></i></div>
+                <div class="cert-info">
+                    <div class="cert-title">AWS Fundamentals</div>
+                    <div class="cert-from">Kodekloud</div>
                 </div>
-                <div class="input-field">
-                    <input type="text" placeholder="Subject" required name="Subject">
-                    <span class="focus"></span>
+                <div class="cert-check"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <div class="cert-card reveal reveal-d4">
+                <div class="cert-icon-wrap"><i class="fa-brands fa-python"></i></div>
+                <div class="cert-info">
+                    <div class="cert-title">Python Programming</div>
+                    <div class="cert-from">IIT Bombay</div>
                 </div>
-                <span class="animate scroll" style="--i:3;"></span>
+                <div class="cert-check"><i class="fa-solid fa-check"></i></div>
             </div>
-            <div class="textarea-field">
-                <textarea name="Message" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
-                <span class="focus"></span>
-
-                <span class="animate scroll" style="--i:4;"></span>
+            <div class="cert-card reveal reveal-d5">
+                <div class="cert-icon-wrap"><i class="fa-solid fa-pen-ruler"></i></div>
+                <div class="cert-info">
+                    <div class="cert-title">UI/UX Design</div>
+                    <div class="cert-from">TVS</div>
+                </div>
+                <div class="cert-check"><i class="fa-solid fa-check"></i></div>
             </div>
-            <div class="btn-box btns">
-                <button type="submit" class="btn">Submit</button>
-                <span class="animate scroll" style="--i:5;"></span>
+            <div class="cert-card reveal reveal-d6">
+                <div class="cert-icon-wrap"><i class="fa-solid fa-chart-bar"></i></div>
+                <div class="cert-info">
+                    <div class="cert-title">Power BI</div>
+                    <div class="cert-from">Imarticus Learning</div>
+                </div>
+                <div class="cert-check"><i class="fa-solid fa-check"></i></div>
             </div>
-        </form>
+        </div>
     </section>
-    <footer class="footer">
-        <div class="footer-text">
-            <p>Copyright @ 2025 | Designed by Dhanush Kumar | All
-                Rights Reserved .</p>
 
-            <span class="animate scroll" style="--i:1;"></span>
-        </div>
+    <!-- ============================================================
+         CONTACT  —  Formsubmit.co
+    ============================================================ -->
+    <section id="contact" class="section-alt">
+        <div class="section-label reveal">Get In Touch</div>
+        <h2 class="section-title reveal reveal-d1">Let's build something<br>great together.</h2>
 
-        <div class="footer-iconTop">
-            <a href="#"><i class='bx bx-up-arrow-alt'></i></a>
-            <a href="https://www.linkedin.com/in/Dhanush Kumar" target="_blank"><i
-                    class="fa-brands fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/dhanushh15" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="tel:+91 9940282826"><i class="fas fa-phone"></i> </a>
+        <div class="contact-inner">
+            <div class="contact-info">
+                <h3 class="reveal reveal-d2">Open to full-time roles &amp; freelance projects.</h3>
+                <p class="reveal reveal-d3">Whether you have a project in mind, a role that might be a great fit, or
+                    just want to say hello — my inbox is always open.</p>
+                <div class="contact-detail reveal reveal-d3">
+                    <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <span>dhanushkumarr1508@gmail.com</span>
+                </div>
+                <div class="contact-detail reveal reveal-d4">
+                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                    <span>+91 99402 82826</span>
+                </div>
+                <div class="contact-detail reveal reveal-d5">
+                    <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <span>Chennai, Tamil Nadu, India</span>
+                </div>
+            </div>
+
+            <!--
+                FORMSUBMIT.CO — HOW IT WORKS:
+                1. First submit → you get a confirmation email → click the link once
+                2. Every submit after that → lands in your Gmail instantly ✅
+                No API keys, no accounts, nothing to configure.
+            -->
+            <form class="contact-form reveal reveal-d2" id="contactForm"
+                action="https://formsubmit.co/dhanushkumarr1508@gmail.com" method="POST">
+                <!-- Formsubmit config -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Portfolio Message!">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://raghull15.github.io/newportfolio/?success=true">
+
+                <div class="form-row">
+                    <div class="float-field">
+                        <input type="text" id="fname" name="Full Name" placeholder="Full Name" required>
+                        <label for="fname">Full Name</label>
+                    </div>
+                    <div class="float-field">
+                        <input type="email" id="femail" name="Email" placeholder="Your Email" required>
+                        <label for="femail">Your Email</label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="float-field">
+                        <input type="tel" id="fphone" name="Mobile Number" placeholder="Mobile Number">
+                        <label for="fphone">Mobile Number</label>
+                    </div>
+                    <div class="float-field">
+                        <input type="text" id="fsubject" name="Subject" placeholder="Subject" required>
+                        <label for="fsubject">Subject</label>
+                    </div>
+                </div>
+
+                <div class="float-field">
+                    <textarea id="fmessage" name="Message" rows="5" placeholder="Your Message" required></textarea>
+                    <label for="fmessage">Your Message</label>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="btnText"><i class="fa-solid fa-paper-plane"></i>&nbsp; Send Message</span>
+                    <span id="btnSpinner" style="display:none">
+                        <i class="fa-solid fa-circle-notch fa-spin"></i>&nbsp; Sending…
+                    </span>
+                </button>
+
+                <!-- SUCCESS MESSAGE (hidden initially) -->
+                <p id="successMessage" style="display:none; color:lightgreen; margin-top:15px;">
+                    ✅ Message sent successfully!
+                </p>
+            </form>
         </div>
-        <span class="animate scroll" style="--i:3;"></span>
+    </section>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer>
+        <p class="footer-copy">© 2025 Dhanush Kumar. Designed &amp; built with ❤️</p>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/dhanushkumar" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.instagram.com/dhanushh15" target="_blank" rel="noopener">Instagram</a>
+            <a href="mailto:dhanushkumarr1508@gmail.com">Email</a>
         </div>
     </footer>
-    <div class="main-container">
-    </div>
-    </div>
+
     <script src="script.js"></script>
 </body>
 
