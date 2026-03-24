@@ -1,40 +1,8 @@
-/* ================================================================
-   script.js  —  Dhanush Kumar Portfolio
-   Features:
-     1. Custom cursor
-     2. Particle canvas
-     3. Typing animation
-     4. Sticky navbar + active section
-     5. Hamburger mobile menu
-     6. Dark / Light theme toggle
-     7. Scroll reveal
-     8. Skill bar animations
-     9. EmailJS contact form
-================================================================ */
+const EMAILJS_PUBLIC_KEY  = '-cawejxZaLoIR7jlN';
+const EMAILJS_SERVICE_ID  = 'service_sryb28h';  
+const EMAILJS_TEMPLATE_ID = 'template_6tyy85g';  
 
-/* ================================================================
-   EMAILJS CONFIG
-   ────────────────────────────────────────────────────────────────
-   Fill in your 3 values from emailjs.com:
-
-   PUBLIC_KEY  →  Account → API Keys → Public Key
-   SERVICE_ID  →  Email Services → your service  (service_gbrqgzt)
-   TEMPLATE_ID →  Email Templates → your template → copy ID
-
-   Your EmailJS template MUST have these variable names:
-     {{from_name}}   {{from_email}}   {{phone}}
-     {{subject}}     {{message}}
-   And "To Email" in the template = dhanushkumarr1508@gmail.com
-================================================================ */
-const EMAILJS_PUBLIC_KEY  = '-cawejxZaLoIR7jlN';   // ← paste here
-const EMAILJS_SERVICE_ID  = 'service_sryb28h';   // ← already yours ✅
-const EMAILJS_TEMPLATE_ID = 'template_6tyy85g';  // ← paste after saving template
-
-/* ================================================================
-   INIT — runs after DOM is ready
-================================================================ */
 document.addEventListener('DOMContentLoaded', () => {
-    /* Init EmailJS with your public key */
     if (typeof emailjs !== 'undefined') {
         emailjs.init(EMAILJS_PUBLIC_KEY);
     }
@@ -50,9 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
 });
 
-/* ================================================================
-   1. CUSTOM CURSOR
-================================================================ */
 function initCursor() {
     const dot  = document.getElementById('cursorDot');
     const ring = document.getElementById('cursorRing');
@@ -61,7 +26,6 @@ function initCursor() {
     let mouseX = 0, mouseY = 0;
     let ringX  = 0, ringY  = 0;
 
-    /* dot snaps instantly */
     document.addEventListener('mousemove', e => {
         mouseX = e.clientX;
         mouseY = e.clientY;
@@ -69,7 +33,6 @@ function initCursor() {
         dot.style.top  = mouseY + 'px';
     });
 
-    /* ring lerps with delay */
     (function lerp() {
         ringX += (mouseX - ringX) * 0.13;
         ringY += (mouseY - ringY) * 0.13;
@@ -78,7 +41,6 @@ function initCursor() {
         requestAnimationFrame(lerp);
     })();
 
-    /* scale ring on hover of interactive elements */
     document.querySelectorAll('a, button, .pill, .cert-card, .project-card, .exp-card, .fact-item')
         .forEach(el => {
             el.addEventListener('mouseenter', () => {
@@ -94,9 +56,6 @@ function initCursor() {
         });
 }
 
-/* ================================================================
-   2. PARTICLE CANVAS
-================================================================ */
 function initParticles() {
     const canvas = document.getElementById('particle-canvas');
     if (!canvas) return;
@@ -144,9 +103,6 @@ function initParticles() {
     })();
 }
 
-/* ================================================================
-   3. TYPING ANIMATION
-================================================================ */
 function initTyping() {
     const el = document.getElementById('typed');
     if (!el) return;
@@ -174,9 +130,6 @@ function initTyping() {
     setTimeout(type, 900);
 }
 
-/* ================================================================
-   4. NAVBAR — sticky + active section highlight
-================================================================ */
 function initNavbar() {
     const navbar   = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -199,9 +152,6 @@ function initNavbar() {
     onScroll();
 }
 
-/* ================================================================
-   5. HAMBURGER MOBILE MENU
-================================================================ */
 function initHamburger() {
     const hamburger   = document.getElementById('hamburger');
     const mobileNav   = document.getElementById('mobileNav');
@@ -226,9 +176,6 @@ function initHamburger() {
     document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
 }
 
-/* ================================================================
-   6. THEME TOGGLE — dark ↔ light, saved to localStorage
-================================================================ */
 function initThemeToggle() {
     const html      = document.documentElement;
     const toggleBtn = document.getElementById('themeToggle');
@@ -252,9 +199,7 @@ function initThemeToggle() {
     }
 }
 
-/* ================================================================
-   7. SCROLL REVEAL
-================================================================ */
+
 function initScrollReveal() {
     const els = document.querySelectorAll('.reveal');
     if (!els.length) return;
@@ -271,9 +216,6 @@ function initScrollReveal() {
     els.forEach(el => io.observe(el));
 }
 
-/* ================================================================
-   8. SKILL BARS
-================================================================ */
 function initSkillBars() {
     const fills = document.querySelectorAll('.skill-bar-fill');
     if (!fills.length) return;
@@ -294,13 +236,6 @@ function initSkillBars() {
     }, { threshold: 0.2 }).observe(skillsSection);
 }
 
-/* ================================================================
-   9. CONTACT FORM — EmailJS
-   ────────────────────────────────────────────────────────────────
-   Sends email via EmailJS without any page reload.
-   Shows green toast on success, red toast on error.
-   The form stays on the page — no redirect needed.
-================================================================ */
 function initContactForm() {
     const form       = document.getElementById('contactForm');
     const submitBtn  = document.getElementById('submitBtn');
@@ -310,39 +245,33 @@ function initContactForm() {
     if (!form) return;
 
     form.addEventListener('submit', async (e) => {
-        e.preventDefault(); /* stop normal form submit — EmailJS handles it */
+        e.preventDefault(); 
 
-        /* HTML5 validation */
         if (!form.checkValidity()) {
             form.reportValidity();
             return;
         }
 
-        /* show spinner */
         setLoading(true);
         hideToast();
 
         try {
-            /* check EmailJS loaded */
             if (typeof emailjs === 'undefined') {
                 throw new Error('EmailJS SDK not loaded.');
             }
 
-            /* send the form — field names must match template variables */
             await emailjs.sendForm(
                 EMAILJS_SERVICE_ID,
                 EMAILJS_TEMPLATE_ID,
-                form           /* passes all named inputs automatically */
+                form           
             );
 
-            /* SUCCESS */
             showToast('success', '✅ Message sent successfully! I\'ll get back to you soon.');
             form.reset();
 
         } catch (err) {
             console.error('EmailJS error:', err);
 
-            /* ERROR */
             showToast('error', '❌ Failed to send. Please email me directly at dhanushkumarr1508@gmail.com');
 
         } finally {
@@ -350,7 +279,6 @@ function initContactForm() {
         }
     });
 
-    /* ── helpers ── */
 
     function setLoading(on) {
         submitBtn.disabled          = on;
@@ -360,7 +288,7 @@ function initContactForm() {
 
     function showToast(type, msg) {
         toast.textContent = msg;
-        toast.className   = 'form-toast ' + type; /* triggers CSS display */
+        toast.className   = 'form-toast ' + type; 
         toast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         setTimeout(hideToast, 7000);
     }
