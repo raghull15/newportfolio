@@ -1,18 +1,44 @@
 /* ================================================================
    script.js  —  Dhanush Kumar Portfolio
    Features:
-     1. Custom cursor (dot + lagging ring)
+     1. Custom cursor
      2. Particle canvas
      3. Typing animation
-     4. Sticky navbar + active section highlight
+     4. Sticky navbar + active section
      5. Hamburger mobile menu
-     6. Dark / Light theme toggle (persists in localStorage)
-     7. Scroll reveal (IntersectionObserver)
+     6. Dark / Light theme toggle
+     7. Scroll reveal
      8. Skill bar animations
-     9. Contact form (Formsubmit.co — shows spinner on submit)
+     9. EmailJS contact form
 ================================================================ */
 
+/* ================================================================
+   EMAILJS CONFIG
+   ────────────────────────────────────────────────────────────────
+   Fill in your 3 values from emailjs.com:
+
+   PUBLIC_KEY  →  Account → API Keys → Public Key
+   SERVICE_ID  →  Email Services → your service  (service_gbrqgzt)
+   TEMPLATE_ID →  Email Templates → your template → copy ID
+
+   Your EmailJS template MUST have these variable names:
+     {{from_name}}   {{from_email}}   {{phone}}
+     {{subject}}     {{message}}
+   And "To Email" in the template = dhanushkumarr1508@gmail.com
+================================================================ */
+const EMAILJS_PUBLIC_KEY  = '-cawejxZaLoIR7jlN';   // ← paste here
+const EMAILJS_SERVICE_ID  = 'service_sryb28h';   // ← already yours ✅
+const EMAILJS_TEMPLATE_ID = 'template_6tyy85g';  // ← paste after saving template
+
+/* ================================================================
+   INIT — runs after DOM is ready
+================================================================ */
 document.addEventListener('DOMContentLoaded', () => {
+    /* Init EmailJS with your public key */
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
+
     initCursor();
     initParticles();
     initTyping();
@@ -35,7 +61,7 @@ function initCursor() {
     let mouseX = 0, mouseY = 0;
     let ringX  = 0, ringY  = 0;
 
-    /* dot follows instantly */
+    /* dot snaps instantly */
     document.addEventListener('mousemove', e => {
         mouseX = e.clientX;
         mouseY = e.clientY;
@@ -43,7 +69,7 @@ function initCursor() {
         dot.style.top  = mouseY + 'px';
     });
 
-    /* ring lerps behind */
+    /* ring lerps with delay */
     (function lerp() {
         ringX += (mouseX - ringX) * 0.13;
         ringY += (mouseY - ringY) * 0.13;
@@ -52,8 +78,8 @@ function initCursor() {
         requestAnimationFrame(lerp);
     })();
 
-    /* scale ring on interactive elements */
-    document.querySelectorAll('a, button, .pill, .cert-card, .project-card, .exp-card, .fact-item, .social-link')
+    /* scale ring on hover of interactive elements */
+    document.querySelectorAll('a, button, .pill, .cert-card, .project-card, .exp-card, .fact-item')
         .forEach(el => {
             el.addEventListener('mouseenter', () => {
                 ring.style.width   = '56px';
@@ -104,7 +130,7 @@ function initParticles() {
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = hexToRgba('#7C6FF7', this.opacity);
+            ctx.fillStyle = `rgba(124,111,247,${this.opacity})`;
             ctx.fill();
         }
     }
@@ -116,14 +142,6 @@ function initParticles() {
         particles.forEach(p => { p.update(); p.draw(); });
         requestAnimationFrame(animate);
     })();
-}
-
-/* hex → rgba helper */
-function hexToRgba(hex, alpha) {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-    return `rgba(${r},${g},${b},${alpha})`;
 }
 
 /* ================================================================
@@ -145,17 +163,14 @@ function initTyping() {
         let delay = isDeleting ? 55 : 105;
 
         if (!isDeleting && charIndex > current.length) {
-            delay = 1800;
-            isDeleting = true;
+            delay = 1800; isDeleting = true;
         } else if (isDeleting && charIndex < 0) {
-            isDeleting  = false;
-            charIndex   = 0;
-            roleIndex   = (roleIndex + 1) % roles.length;
-            delay       = 300;
+            isDeleting = false; charIndex = 0;
+            roleIndex  = (roleIndex + 1) % roles.length;
+            delay      = 300;
         }
         setTimeout(type, delay);
     }
-
     setTimeout(type, 900);
 }
 
@@ -169,15 +184,11 @@ function initNavbar() {
     if (!navbar) return;
 
     function onScroll() {
-        /* sticky blur */
         navbar.classList.toggle('scrolled', window.scrollY > 60);
 
-        /* highlight active link */
         let current = '';
         sections.forEach(sec => {
-            if (window.scrollY >= sec.offsetTop - 130) {
-                current = sec.getAttribute('id');
-            }
+            if (window.scrollY >= sec.offsetTop - 130) current = sec.id;
         });
         navLinks.forEach(a => {
             a.classList.toggle('active', a.getAttribute('href') === '#' + current);
@@ -192,35 +203,31 @@ function initNavbar() {
    5. HAMBURGER MOBILE MENU
 ================================================================ */
 function initHamburger() {
-    const hamburger  = document.getElementById('hamburger');
-    const mobileNav  = document.getElementById('mobileNav');
-    const mobileClose= document.getElementById('mobileClose');
+    const hamburger   = document.getElementById('hamburger');
+    const mobileNav   = document.getElementById('mobileNav');
+    const mobileClose = document.getElementById('mobileClose');
     if (!hamburger || !mobileNav) return;
 
-    const open = () => {
+    const openMenu = () => {
         hamburger.classList.add('open');
         mobileNav.classList.add('open');
         document.body.style.overflow = 'hidden';
     };
-    const close = () => {
+    const closeMenu = () => {
         hamburger.classList.remove('open');
         mobileNav.classList.remove('open');
         document.body.style.overflow = '';
     };
 
     hamburger.addEventListener('click', () =>
-        hamburger.classList.contains('open') ? close() : open()
+        hamburger.classList.contains('open') ? closeMenu() : openMenu()
     );
-
-    if (mobileClose) mobileClose.addEventListener('click', close);
-
-    document.querySelectorAll('.mobile-link').forEach(link =>
-        link.addEventListener('click', close)
-    );
+    if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
 }
 
 /* ================================================================
-   6. THEME TOGGLE — dark ↔ light, saved in localStorage
+   6. THEME TOGGLE — dark ↔ light, saved to localStorage
 ================================================================ */
 function initThemeToggle() {
     const html      = document.documentElement;
@@ -229,14 +236,13 @@ function initThemeToggle() {
     const iconLight = document.getElementById('themeIconLight');
     if (!toggleBtn) return;
 
-    /* load saved or OS preference */
-    const saved      = localStorage.getItem('dk-theme');
-    const prefersDark= window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const saved       = localStorage.getItem('dk-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     applyTheme(saved || (prefersDark ? 'dark' : 'light'));
 
-    toggleBtn.addEventListener('click', () => {
-        applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-    });
+    toggleBtn.addEventListener('click', () =>
+        applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')
+    );
 
     function applyTheme(theme) {
         html.setAttribute('data-theme', theme);
@@ -247,7 +253,7 @@ function initThemeToggle() {
 }
 
 /* ================================================================
-   7. SCROLL REVEAL — IntersectionObserver, fires once per element
+   7. SCROLL REVEAL
 ================================================================ */
 function initScrollReveal() {
     const els = document.querySelectorAll('.reveal');
@@ -266,94 +272,101 @@ function initScrollReveal() {
 }
 
 /* ================================================================
-   8. SKILL BARS — animate width when skills section enters view
+   8. SKILL BARS
 ================================================================ */
 function initSkillBars() {
     const fills = document.querySelectorAll('.skill-bar-fill');
     if (!fills.length) return;
 
-    /* set the CSS var each bar animates to */
     fills.forEach(bar => {
-        const pct = bar.getAttribute('data-pct') || '0';
-        bar.style.setProperty('--w', pct + '%');
+        bar.style.setProperty('--w', (bar.getAttribute('data-pct') || '0') + '%');
     });
 
     const skillsSection = document.getElementById('skills');
     if (!skillsSection) return;
 
-    const io = new IntersectionObserver((entries) => {
+    new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 fills.forEach(bar => bar.classList.add('animate'));
-                io.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2 });
-
-    io.observe(skillsSection);
+    }, { threshold: 0.2 }).observe(skillsSection);
 }
 
 /* ================================================================
-   9. CONTACT FORM — Formsubmit.co
-   ──────────────────────────────────────────────────────────────
-   How it works:
-   • The <form> action points to formsubmit.co/your@email.com
-   • On FIRST submit → Formsubmit emails you a confirmation link
-     → click it once to activate
-   • Every submit after that → email arrives in your Gmail ✅
-   • No API keys, no accounts, nothing else needed.
-   
-   This function just shows a loading spinner while the form
-   does its normal HTTP POST to Formsubmit.
+   9. CONTACT FORM — EmailJS
+   ────────────────────────────────────────────────────────────────
+   Sends email via EmailJS without any page reload.
+   Shows green toast on success, red toast on error.
+   The form stays on the page — no redirect needed.
 ================================================================ */
 function initContactForm() {
     const form       = document.getElementById('contactForm');
     const submitBtn  = document.getElementById('submitBtn');
     const btnText    = document.getElementById('btnText');
     const btnSpinner = document.getElementById('btnSpinner');
-
+    const toast      = document.getElementById('formToast');
     if (!form) return;
 
-    /* =========================
-       1. Handle form submit
-    ========================= */
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); /* stop normal form submit — EmailJS handles it */
+
+        /* HTML5 validation */
         if (!form.checkValidity()) {
             form.reportValidity();
-            e.preventDefault();
             return;
         }
 
-        if (submitBtn)  submitBtn.disabled      = true;
-        if (btnText)    btnText.style.display   = 'none';
-        if (btnSpinner) btnSpinner.style.display= 'inline-flex';
+        /* show spinner */
+        setLoading(true);
+        hideToast();
+
+        try {
+            /* check EmailJS loaded */
+            if (typeof emailjs === 'undefined') {
+                throw new Error('EmailJS SDK not loaded.');
+            }
+
+            /* send the form — field names must match template variables */
+            await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                form           /* passes all named inputs automatically */
+            );
+
+            /* SUCCESS */
+            showToast('success', '✅ Message sent successfully! I\'ll get back to you soon.');
+            form.reset();
+
+        } catch (err) {
+            console.error('EmailJS error:', err);
+
+            /* ERROR */
+            showToast('error', '❌ Failed to send. Please email me directly at dhanushkumarr1508@gmail.com');
+
+        } finally {
+            setLoading(false);
+        }
     });
 
-    /* =========================
-       2. Detect success after redirect
-    ========================= */
-    const params = new URLSearchParams(window.location.search);
+    /* ── helpers ── */
 
-    if (params.get("success") === "true") {
+    function setLoading(on) {
+        submitBtn.disabled          = on;
+        btnText.style.display       = on ? 'none'         : 'inline-flex';
+        btnSpinner.style.display    = on ? 'inline-flex'  : 'none';
+    }
 
-        /* Create success message dynamically */
-        const successMsg = document.createElement("div");
-        successMsg.innerHTML = "✅ Message sent successfully!";
-        successMsg.style.color = "#4CAF50";
-        successMsg.style.marginTop = "15px";
-        successMsg.style.fontSize = "16px";
+    function showToast(type, msg) {
+        toast.textContent = msg;
+        toast.className   = 'form-toast ' + type; /* triggers CSS display */
+        toast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        setTimeout(hideToast, 7000);
+    }
 
-        form.appendChild(successMsg);
-
-        /* Reset form */
-        form.reset();
-
-        /* Reset button state */
-        if (submitBtn)  submitBtn.disabled      = false;
-        if (btnText)    btnText.style.display   = 'inline';
-        if (btnSpinner) btnSpinner.style.display= 'none';
-
-        /* Clean URL (remove ?success=true) */
-        window.history.replaceState({}, document.title, window.location.pathname);
+    function hideToast() {
+        toast.className   = 'form-toast';
+        toast.textContent = '';
     }
 }
