@@ -1,20 +1,10 @@
-/* ================================================================
-   style.css  —  Dhanush Kumar Portfolio
-   Palette: Violet-Indigo accent  |  Dark + Light themes
-================================================================ */
-
-/* ----------------------------------------------------------------
-   1. THEME VARIABLES
----------------------------------------------------------------- */
 :root {
-    /* Accent colour — Violet / Indigo */
     --accent:        #7C6FF7;
     --accent-light:  #A89EFA;
     --accent-dim:    rgba(124, 111, 247, 0.14);
     --accent-glow:   rgba(124, 111, 247, 0.38);
     --accent-border: rgba(124, 111, 247, 0.25);
 
-    /* Shared */
     --radius: 16px;
     --font-display: 'Syne', sans-serif;
     --font-body:    'DM Sans', sans-serif;
@@ -22,7 +12,6 @@
     --transition:    0.4s var(--ease);
 }
 
-/* Dark theme (default) */
 [data-theme="dark"] {
     --bg:          #080B14;
     --bg2:         #0D1220;
@@ -38,7 +27,6 @@
     --pill-bg:     rgba(255,255,255,0.05);
 }
 
-/* Light theme */
 [data-theme="light"] {
     --bg:          #F4F5FB;
     --bg2:         #ECEEF6;
@@ -54,9 +42,6 @@
     --pill-bg:     rgba(124,111,247,0.07);
 }
 
-/* ----------------------------------------------------------------
-   2. RESET
----------------------------------------------------------------- */
 *, *::before, *::after {
     margin: 0; padding: 0;
     box-sizing: border-box;
@@ -78,23 +63,16 @@ body {
     transition: background 0.45s, color 0.45s;
 }
 
-/* Kill cursor on touch devices */
 @media (hover: none) {
     body { cursor: auto; }
     .cursor-dot, .cursor-ring { display: none; }
 }
 
-/* ----------------------------------------------------------------
-   3. SCROLLBAR  |  SELECTION
----------------------------------------------------------------- */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; }
 ::selection { background: var(--accent); color: #fff; }
 
-/* ----------------------------------------------------------------
-   4. NOISE OVERLAY
----------------------------------------------------------------- */
 body::before {
     content: '';
     position: fixed; inset: 0;
@@ -105,9 +83,6 @@ body::before {
 }
 [data-theme="light"] body::before { opacity: 0.10; }
 
-/* ----------------------------------------------------------------
-   5. PARTICLE CANVAS
----------------------------------------------------------------- */
 #particle-canvas {
     position: fixed; top: 0; left: 0;
     width: 100%; height: 100%;
@@ -118,9 +93,6 @@ body::before {
 }
 [data-theme="light"] #particle-canvas { opacity: 0.22; }
 
-/* ----------------------------------------------------------------
-   6. CUSTOM CURSOR
----------------------------------------------------------------- */
 .cursor-dot {
     position: fixed; top: 0; left: 0;
     width: 8px; height: 8px;
@@ -142,9 +114,6 @@ body::before {
     opacity: 0.45;
 }
 
-/* ----------------------------------------------------------------
-   7. NAVBAR
----------------------------------------------------------------- */
 nav {
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 1000;
@@ -191,12 +160,10 @@ nav.scrolled {
 .nav-links a:hover::after,
 .nav-links a.active::after { width: 100%; }
 
-/* Nav right (toggle + hamburger) */
 .nav-right {
     display: flex; align-items: center; gap: 1.2rem;
 }
 
-/* ── Theme Toggle ── */
 .theme-toggle {
     position: relative;
     width: 52px; height: 28px;
@@ -222,7 +189,6 @@ nav.scrolled {
     transform: translateX(24px);
 }
 
-/* ── Hamburger ── */
 .hamburger {
     display: none;
     flex-direction: column; gap: 5px;
@@ -240,7 +206,6 @@ nav.scrolled {
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── Mobile Nav overlay ── */
 .mobile-nav {
     display: none;
     position: fixed; inset: 0;
@@ -269,9 +234,6 @@ nav.scrolled {
 }
 .mobile-link:hover { color: var(--accent); }
 
-/* ----------------------------------------------------------------
-   8. SECTION COMMONS
----------------------------------------------------------------- */
 section {
     position: relative; z-index: 2;
     padding: 7rem 8%;
@@ -302,9 +264,6 @@ section {
     margin-bottom: 3rem;
 }
 
-/* ----------------------------------------------------------------
-   9. SCROLL REVEAL
----------------------------------------------------------------- */
 .reveal {
     opacity: 0;
     transform: translateY(38px);
@@ -318,9 +277,6 @@ section {
 .reveal-d5 { transition-delay: 0.50s; }
 .reveal-d6 { transition-delay: 0.60s; }
 
-/* ----------------------------------------------------------------
-   10. BUTTONS
----------------------------------------------------------------- */
 .btn-primary {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 0.85rem 2rem;
@@ -357,9 +313,6 @@ section {
     transform: translateY(-2px);
 }
 
-/* ----------------------------------------------------------------
-   11. HERO
----------------------------------------------------------------- */
 .section-hero {
     min-height: 100vh;
     display: flex; align-items: center;
@@ -399,7 +352,6 @@ section {
     animation: pulse 2s infinite;
 }
 
-/* Name */
 .hero-name {
     font-family: var(--font-display);
     font-size: clamp(3rem, 7vw, 6.5rem);
@@ -410,7 +362,6 @@ section {
     animation: fadeSlideUp 0.8s 0.2s forwards; opacity: 0;
 }
 
-/* Role typing */
 .hero-role {
     font-family: var(--font-display);
     font-size: clamp(1.4rem, 3.5vw, 3rem);
@@ -429,7 +380,6 @@ section {
     animation: blink 0.8s step-end infinite;
 }
 
-/* Desc */
 .hero-desc {
     font-size: 1.05rem; color: var(--muted);
     max-width: 580px; line-height: 1.85;
@@ -437,13 +387,11 @@ section {
     animation: fadeSlideUp 0.8s 0.5s forwards; opacity: 0;
 }
 
-/* Action buttons */
 .hero-actions {
     display: flex; gap: 1rem; flex-wrap: wrap;
     animation: fadeSlideUp 0.8s 0.65s forwards; opacity: 0;
 }
 
-/* Social links */
 .hero-socials {
     display: flex; gap: 0.8rem;
     margin-top: 3rem;
@@ -465,7 +413,6 @@ section {
     transform: translateY(-3px);
 }
 
-/* Scroll indicator */
 .scroll-indicator {
     position: absolute; bottom: 2.5rem; left: 50%;
     transform: translateX(-50%);
@@ -480,9 +427,6 @@ section {
     animation: scrollBounce 1.8s ease-in-out infinite;
 }
 
-/* ----------------------------------------------------------------
-   12. ABOUT
----------------------------------------------------------------- */
 #about { background: var(--bg); }
 
 .about-grid {
@@ -512,7 +456,6 @@ section {
     font-size: 4rem; color: var(--muted);
 }
 
-/* Spinning glow ring */
 .img-glow-ring {
     position: absolute; inset: -12px;
     border-radius: 32px;
@@ -522,7 +465,6 @@ section {
     z-index: -1;
 }
 
-/* Floating stat tag */
 .img-tag {
     position: absolute; bottom: -20px; right: -20px;
     background: var(--card);
@@ -554,7 +496,6 @@ section {
     margin-bottom: 1.2rem;
 }
 
-/* Fact boxes */
 .about-facts {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 1rem; margin-top: 2rem;
@@ -577,9 +518,6 @@ section {
 }
 .fact-label { font-size: 0.76rem; color: var(--muted); margin-top: 4px; }
 
-/* ----------------------------------------------------------------
-   13. EXPERIENCE
----------------------------------------------------------------- */
 .experience-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -650,9 +588,6 @@ section {
     font-size: 0.72rem; color: var(--accent-light);
 }
 
-/* ----------------------------------------------------------------
-   14. PROJECTS
----------------------------------------------------------------- */
 #projects { background: var(--bg); }
 
 .projects-grid {
@@ -733,9 +668,6 @@ section {
     box-shadow: 0 0 20px var(--accent-glow);
 }
 
-/* ----------------------------------------------------------------
-   15. SKILLS
----------------------------------------------------------------- */
 #skills { background: var(--bg); }
 
 .skills-layout {
@@ -752,7 +684,6 @@ section {
 }
 .skills-group-label:first-child { margin-top: 0; }
 
-/* Pill badges */
 .pills-grid { display: flex; flex-wrap: wrap; gap: 0.55rem; }
 
 .pill {
@@ -773,7 +704,6 @@ section {
     transform: translateY(-2px);
 }
 
-/* Skill bars */
 .skill-bars { display: flex; flex-direction: column; gap: 1.5rem; }
 
 .skill-bar-header {
@@ -800,9 +730,6 @@ section {
 }
 .skill-bar-fill.animate { width: var(--w); }
 
-/* ----------------------------------------------------------------
-   16. CERTIFICATIONS
----------------------------------------------------------------- */
 #certifications { background: var(--bg2); }
 
 .certs-grid {
@@ -849,9 +776,6 @@ section {
     font-size: 0.6rem; color: var(--accent);
 }
 
-/* ----------------------------------------------------------------
-   17. CONTACT
----------------------------------------------------------------- */
 #contact { background: var(--bg); }
 
 .contact-inner {
@@ -887,7 +811,6 @@ section {
     flex-shrink: 0;
 }
 
-/* Form */
 .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
 .form-row { display: flex; gap: 1rem; }
 .form-row .float-field { flex: 1; }
@@ -934,7 +857,6 @@ section {
     letter-spacing: 0.5px;
 }
 
-/* Toast message */
 .form-toast {
     display: none;
     padding: 0.9rem 1.2rem;
@@ -954,7 +876,6 @@ section {
     color: #F87171;
 }
 
-/* Submit button */
 .submit-btn {
     width: 100%; padding: 1rem;
     background: var(--accent); color: #fff;
@@ -974,9 +895,6 @@ section {
     opacity: 0.7; cursor: not-allowed; transform: none;
 }
 
-/* ----------------------------------------------------------------
-   18. FOOTER
----------------------------------------------------------------- */
 footer {
     position: relative; z-index: 2;
     padding: 2rem 8%;
@@ -993,9 +911,6 @@ footer {
 }
 .footer-links a:hover { color: var(--accent); }
 
-/* ----------------------------------------------------------------
-   19. KEYFRAME ANIMATIONS
----------------------------------------------------------------- */
 @keyframes fadeSlideUp {
     from { opacity: 0; transform: translateY(28px); }
     to   { opacity: 1; transform: translateY(0);    }
@@ -1020,9 +935,6 @@ footer {
     50%       { transform: scaleY(0.5); transform-origin: top; }
 }
 
-/* ----------------------------------------------------------------
-   20. RESPONSIVE
----------------------------------------------------------------- */
 @media (max-width: 1100px) {
     .projects-grid  { grid-template-columns: repeat(2, 1fr); }
     .certs-grid     { grid-template-columns: repeat(2, 1fr); }
