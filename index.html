@@ -4,33 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhanush Kumar — Software Developer</title>
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
-    <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- CURSOR -->
     <div class="cursor-dot"  id="cursorDot"></div>
     <div class="cursor-ring" id="cursorRing"></div>
 
-    <!-- PARTICLES -->
     <canvas id="particle-canvas"></canvas>
-
-    <!-- ============================================================
-         NAVBAR
-    ============================================================ -->
     <nav id="navbar">
         <a href="#home" class="nav-logo">DK<span>.</span></a>
 
@@ -45,21 +33,17 @@
         </ul>
 
         <div class="nav-right">
-            <!-- Theme Toggle -->
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                 <div class="toggle-thumb">
                     <i class="fa-solid fa-moon"  id="themeIconDark"></i>
                     <i class="fa-solid fa-sun"   id="themeIconLight" style="display:none"></i>
                 </div>
             </button>
-            <!-- Hamburger (mobile) -->
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
-
-    <!-- MOBILE NAV -->
     <div class="mobile-nav" id="mobileNav">
         <button class="mobile-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></button>
         <a href="#home"           class="mobile-link">Home</a>
@@ -71,9 +55,6 @@
         <a href="#contact"        class="mobile-link">Contact</a>
     </div>
 
-    <!-- ============================================================
-         HERO
-    ============================================================ -->
     <section id="home" class="section-hero">
         <div class="hero-inner">
             <div class="hero-badge">
@@ -122,10 +103,6 @@
             <span>scroll</span>
         </div>
     </section>
-
-    <!-- ============================================================
-         ABOUT
-    ============================================================ -->
     <section id="about">
         <div class="section-label reveal">About Me</div>
         <h2 class="section-title reveal reveal-d1">Crafting digital experiences<br>with purpose &amp; precision.</h2>
@@ -180,10 +157,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ============================================================
-         EXPERIENCE
-    ============================================================ -->
     <section id="experience" class="section-alt">
         <div class="section-label reveal">Work History</div>
         <h2 class="section-title reveal reveal-d1">Where I've<br>built things.</h2>
@@ -216,14 +189,9 @@
             </div>
         </div>
     </section>
-
-    <!-- ============================================================
-         PROJECTS
-    ============================================================ -->
     <section id="projects">
         <div class="section-label reveal">Portfolio</div>
         <h2 class="section-title reveal reveal-d1">Things I've<br>shipped.</h2>
-
         <div class="projects-grid">
             <div class="project-card reveal reveal-d1">
                 <div class="project-card-top">
@@ -286,10 +254,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ============================================================
-         SKILLS
-    ============================================================ -->
     <section id="skills" class="section-alt">
         <div class="section-label reveal">Expertise</div>
         <h2 class="section-title reveal reveal-d1">My technical<br>toolkit.</h2>
@@ -368,10 +332,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ============================================================
-         CERTIFICATIONS
-    ============================================================ -->
     <section id="certifications">
         <div class="section-label reveal">Credentials</div>
         <h2 class="section-title reveal reveal-d1">Certified &amp;<br>recognized.</h2>
@@ -427,10 +387,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ============================================================
-         CONTACT  —  EmailJS
-    ============================================================ -->
     <section id="contact" class="section-alt">
         <div class="section-label reveal">Get In Touch</div>
         <h2 class="section-title reveal reveal-d1">Let's build something<br>great together.</h2>
@@ -453,8 +409,6 @@
                     <span>Chennai, Tamil Nadu, India</span>
                 </div>
             </div>
-
-            <!-- Form — EmailJS sends without page reload -->
             <form class="contact-form reveal reveal-d2" id="contactForm" novalidate>
 
                 <div class="form-row">
@@ -496,10 +450,6 @@
             </form>
         </div>
     </section>
-
-    <!-- ============================================================
-         FOOTER
-    ============================================================ -->
     <footer>
         <p class="footer-copy">© 2025 Dhanush Kumar. Designed &amp; built with ❤️</p>
         <div class="footer-links">
