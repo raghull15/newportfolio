@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhanush Kumar — Software Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
@@ -14,8 +17,9 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="cursor-dot"  id="cursorDot"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
     <div class="cursor-ring" id="cursorRing"></div>
 
     <canvas id="particle-canvas"></canvas>
@@ -23,20 +27,20 @@
         <a href="#home" class="nav-logo">DK<span>.</span></a>
 
         <ul class="nav-links">
-            <li><a href="#home"           class="nav-link active">Home</a></li>
-            <li><a href="#about"          class="nav-link">About</a></li>
-            <li><a href="#experience"     class="nav-link">Experience</a></li>
-            <li><a href="#projects"       class="nav-link">Projects</a></li>
-            <li><a href="#skills"         class="nav-link">Skills</a></li>
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
             <li><a href="#certifications" class="nav-link">Certifications</a></li>
-            <li><a href="#contact"        class="nav-link">Contact</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
 
         <div class="nav-right">
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                 <div class="toggle-thumb">
-                    <i class="fa-solid fa-moon"  id="themeIconDark"></i>
-                    <i class="fa-solid fa-sun"   id="themeIconLight" style="display:none"></i>
+                    <i class="fa-solid fa-moon" id="themeIconDark"></i>
+                    <i class="fa-solid fa-sun" id="themeIconLight" style="display:none"></i>
                 </div>
             </button>
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -46,13 +50,13 @@
     </nav>
     <div class="mobile-nav" id="mobileNav">
         <button class="mobile-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></button>
-        <a href="#home"           class="mobile-link">Home</a>
-        <a href="#about"          class="mobile-link">About</a>
-        <a href="#experience"     class="mobile-link">Experience</a>
-        <a href="#projects"       class="mobile-link">Projects</a>
-        <a href="#skills"         class="mobile-link">Skills</a>
+        <a href="#home" class="mobile-link">Home</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#experience" class="mobile-link">Experience</a>
+        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="#skills" class="mobile-link">Skills</a>
         <a href="#certifications" class="mobile-link">Certifications</a>
-        <a href="#contact"        class="mobile-link">Contact</a>
+        <a href="#contact" class="mobile-link">Contact</a>
     </div>
 
     <section id="home" class="section-hero">
@@ -69,15 +73,17 @@
             </div>
 
             <p class="hero-desc">
-                Versatile Software Developer and MCA candidate with end-to-end expertise spanning mobile development (Flutter), full-stack web engineering, cloud infrastructure (AWS), and AI integration (RAG, LLMs). From Figma prototype to deployed application — clean, scalable architecture.
+                Versatile Software Developer and MCA graduate with end-to-end expertise spanning mobile development
+                (Flutter), full-stack web engineering, cloud infrastructure (AWS), and AI integration (RAG, LLMs). From
+                Figma prototype to deployed application — clean, scalable architecture.
             </p>
 
             <div class="hero-actions">
                 <a href="#contact" class="btn-primary">
                     <i class="fa-solid fa-paper-plane"></i> Hire Me
                 </a>
-                <a href="https://drive.google.com/file/d/1xRUhzAM0GK-WcbGeJm1gC9GVCRMBuV1b/view?usp=sharing"
-                   target="_blank" rel="noopener" class="btn-outline">
+                <a href="https://drive.google.com/file/d/1i4xlc4pgp8aTI3Mw5nv9bvZkLvA1wqir/view?usp=sharing"
+                    target="_blank" rel="noopener" class="btn-outline">
                     <i class="fa-solid fa-download"></i> Download CV
                 </a>
             </div>
@@ -112,7 +118,7 @@
                 <div class="about-img-container">
                     <div class="img-glow-ring"></div>
                     <img src="d.jpg" alt="Dhanush Kumar"
-                         onerror="this.style.display='none';document.getElementById('imgFallback').style.display='flex';">
+                        onerror="this.style.display='none';document.getElementById('imgFallback').style.display='flex';">
                     <div class="about-img-placeholder" id="imgFallback">
                         <i class="fa-regular fa-user"></i>
                     </div>
@@ -126,10 +132,14 @@
             <div class="about-text">
                 <h3 class="reveal reveal-d2">Hi, I'm Dhanush 👋</h3>
                 <p class="reveal reveal-d3">
-                    I'm a Software Developer and MCA candidate with professional experience across Flutter mobile development, full-stack web engineering, and AI-powered application platforms. Interned as a Flutter Developer at Fellow Founder and as a Software Developer at KLoop.
+                    I'm a Software Developer and MCA graduate with professional experience across Flutter mobile
+                    development, full-stack web engineering, and AI-powered application platforms. Interned as a Flutter
+                    Developer at Fellow Founder and as a Software Developer at KLoop.
                 </p>
                 <p class="reveal reveal-d4">
-                    My projects span RAG-based AI chatbots, blockchain distribution systems, and community resource platforms — all built from design through deployment. I thrive in collaborative team settings where real-world impact is the goal.
+                    My projects span RAG-based AI chatbots, blockchain distribution systems, and community resource
+                    platforms — all built from design through deployment. I thrive in collaborative team settings where
+                    real-world impact is the goal.
                 </p>
                 <div class="about-facts reveal reveal-d5">
                     <div class="fact-item">
@@ -168,10 +178,12 @@
                 <div class="exp-role">Software Developer Intern</div>
                 <div class="exp-company">KLoop · Chennai, India</div>
                 <p class="exp-desc">
-                    Developed full-stack web applications, building responsive frontend interfaces and implementing backend APIs. Designed high-fidelity prototypes and reusable UI components. Contributed to production-level features in sprint planning and code reviews within an Agile team.
+                    Developed full-stack web applications, building responsive frontend interfaces and implementing
+                    backend APIs. Designed high-fidelity prototypes and reusable UI components. Contributed to
+                    production-level features in sprint planning and code reviews within an Agile team.
                 </p>
                 <div class="exp-tags">
-                    <span>React</span><span>Node.js</span><span>Cloud</span><span>MySql</span>
+                    <span>React</span><span>Node.js</span><span>MongoDB</span><span>RAG</span>
                 </div>
             </div>
 
@@ -181,7 +193,9 @@
                 <div class="exp-role">Flutter Developer Intern</div>
                 <div class="exp-company">Fellow Founder · Chennai, India</div>
                 <p class="exp-desc">
-                    Completed a 6-month internship building cross-platform mobile applications for multiple client projects. Implemented state management (Provider, Bloc), integrated REST APIs, optimized performance, and participated in code reviews using Git for version control.
+                    Completed a 6-month internship building cross-platform mobile applications for multiple client
+                    projects. Implemented state management (Provider, Bloc), integrated REST APIs, optimized
+                    performance, and participated in code reviews using Git for version control.
                 </p>
                 <div class="exp-tags">
                     <span>Flutter</span><span>Dart</span><span>Firebase</span><span>Figma</span>
@@ -199,9 +213,14 @@
                     <div class="project-tag">Web · Community</div>
                     <div class="project-name">ShareNear — Community Resource Sharing Platform</div>
                 </div>
-                <p class="project-desc">A resource donation and discovery platform connecting donors with shelters. Includes SOS feature for urgent requests and an admin dashboard for monitoring, verification, and platform safety.</p>
+                <p class="project-desc">A resource donation and discovery platform connecting donors with shelters.
+                    Includes SOS feature for urgent requests and an admin dashboard for monitoring, verification, and
+                    platform safety.</p>
                 <div class="project-card-bottom">
-                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</button>
+                    <a href="https://sharenear-app.web.app/" target="_blank" rel="noopener">
+                        <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View
+                            Project</button>
+                    </a>
                 </div>
             </div>
 
@@ -211,9 +230,11 @@
                     <div class="project-tag">AI · Platform</div>
                     <div class="project-name">Agentic Loop — Document &amp; Database-Aware AI Agent</div>
                 </div>
-                <p class="project-desc">A customizable AI-powered chatbot generator enabling businesses to create chatbots using their own data sources — PDFs, links, spreadsheets, and documents.</p>
+                <p class="project-desc">A customizable AI-powered chatbot generator enabling businesses to create
+                    chatbots using their own data sources — PDFs, links, spreadsheets, and documents.</p>
                 <div class="project-card-bottom">
-                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</button>
+                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View
+                        Project</button>
                 </div>
             </div>
 
@@ -223,9 +244,11 @@
                     <div class="project-tag">AI · Legal</div>
                     <div class="project-name">AI Contract Generator for Legal Documents</div>
                 </div>
-                <p class="project-desc">An intelligent legal document generation tool that creates customized contracts based on user inputs with AI-powered template customization and smart clause suggestions.</p>
+                <p class="project-desc">An intelligent legal document generation tool that creates customized contracts
+                    based on user inputs with AI-powered template customization and smart clause suggestions.</p>
                 <div class="project-card-bottom">
-                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</button>
+                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View
+                        Project</button>
                 </div>
             </div>
 
@@ -235,9 +258,14 @@
                     <div class="project-tag">Blockchain · GovTech</div>
                     <div class="project-name">RationChain — Blockchain Ration Distribution System</div>
                 </div>
-                <p class="project-desc">A secure, immutable system for government ration distribution using a custom Python blockchain with cryptographic hashing, identity verification, and a real-time analytics dashboard.</p>
+                <p class="project-desc">A secure, immutable system for government ration distribution using a custom
+                    Python blockchain with cryptographic hashing, identity verification, and a real-time analytics
+                    dashboard.</p>
                 <div class="project-card-bottom">
-                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</button>
+                    <a href="https://ration-shop-chain.onrender.com/" target="_blank" rel="noopener">
+                        <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View
+                            Project</button>
+                    </a>
                 </div>
             </div>
 
@@ -247,9 +275,15 @@
                     <div class="project-tag">Mobile · E-Commerce</div>
                     <div class="project-name">Shoplane — Full-Stack E-Commerce Mobile App</div>
                 </div>
-                <p class="project-desc">Full-stack e-commerce mobile app using Flutter and Firebase with admin dashboard, Cloudinary integration for image handling, and real-time order updates.</p>
+                <p class="project-desc">Full-stack e-commerce mobile app using Flutter and Firebase with admin
+                    dashboard, Cloudinary integration for image handling, and real-time order updates.</p>
                 <div class="project-card-bottom">
-                    <button class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</button>
+                    <a href="https://shoplon-2cbd5.web.app/" target="_blank" rel="noopener">
+                        <button class="view-btn">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            View Project
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -291,42 +325,54 @@
                             <span class="skill-bar-name">Flutter / Dart</span>
                             <span class="skill-bar-pct">78%</span>
                         </div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="78"></div></div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="78"></div>
+                        </div>
                     </div>
                     <div class="skill-bar-item">
                         <div class="skill-bar-header">
                             <span class="skill-bar-name">HTML &amp; CSS</span>
                             <span class="skill-bar-pct">70%</span>
                         </div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="70"></div></div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="70"></div>
+                        </div>
                     </div>
                     <div class="skill-bar-item">
                         <div class="skill-bar-header">
                             <span class="skill-bar-name">ReactJS</span>
                             <span class="skill-bar-pct">60%</span>
                         </div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="60"></div></div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="60"></div>
+                        </div>
                     </div>
                     <div class="skill-bar-item">
                         <div class="skill-bar-header">
                             <span class="skill-bar-name">Python</span>
                             <span class="skill-bar-pct">68%</span>
                         </div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="68"></div></div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="68"></div>
+                        </div>
                     </div>
                     <div class="skill-bar-item">
                         <div class="skill-bar-header">
                             <span class="skill-bar-name">AWS / Cloud</span>
                             <span class="skill-bar-pct">70%</span>
                         </div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="70"></div></div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="70"></div>
+                        </div>
                     </div>
                     <div class="skill-bar-item">
                         <div class="skill-bar-header">
                             <span class="skill-bar-name">MySQL</span>
                             <span class="skill-bar-pct">65%</span>
                         </div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="65"></div></div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-pct="65"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -395,7 +441,8 @@
             <!-- Info -->
             <div class="contact-info">
                 <h3 class="reveal reveal-d2">Open to full-time roles &amp; freelance projects.</h3>
-                <p class="reveal reveal-d3">Whether you have a project in mind, a role that might be a great fit, or just want to say hello — my inbox is always open.</p>
+                <p class="reveal reveal-d3">Whether you have a project in mind, a role that might be a great fit, or
+                    just want to say hello — my inbox is always open.</p>
                 <div class="contact-detail reveal reveal-d3">
                     <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
                     <span>dhanushkumarr1508@gmail.com</span>
@@ -413,22 +460,22 @@
 
                 <div class="form-row">
                     <div class="float-field">
-                        <input type="text"  id="from_name"  name="from_name"  placeholder="Full Name"     required>
+                        <input type="text" id="from_name" name="from_name" placeholder="Full Name" required>
                         <label for="from_name">Full Name</label>
                     </div>
                     <div class="float-field">
-                        <input type="email" id="from_email" name="from_email" placeholder="Your Email"    required>
+                        <input type="email" id="from_email" name="from_email" placeholder="Your Email" required>
                         <label for="from_email">Your Email</label>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="float-field">
-                        <input type="tel"   id="phone"      name="phone"      placeholder="Mobile Number">
+                        <input type="tel" id="phone" name="phone" placeholder="Mobile Number">
                         <label for="phone">Mobile Number</label>
                     </div>
                     <div class="float-field">
-                        <input type="text"  id="subject"    name="subject"    placeholder="Subject"       required>
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
                         <label for="subject">Subject</label>
                     </div>
                 </div>
@@ -454,11 +501,12 @@
         <p class="footer-copy">© 2025 Dhanush Kumar. Designed &amp; built with ❤️</p>
         <div class="footer-links">
             <a href="https://www.linkedin.com/in/dhanushkumar" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://www.instagram.com/dhanushh15"     target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.instagram.com/dhanushh15" target="_blank" rel="noopener">Instagram</a>
             <a href="mailto:dhanushkumarr1508@gmail.com">Email</a>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>
