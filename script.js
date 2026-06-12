@@ -74,10 +74,11 @@ function initParticles() {
         reset(initial = false) {
             this.x       = Math.random() * canvas.width;
             this.y       = initial ? Math.random() * canvas.height : -4;
-            this.size    = Math.random() * 1.4 + 0.3;
-            this.speedX  = (Math.random() - 0.5) * 0.25;
-            this.speedY  = Math.random() * 0.35 + 0.1;
-            this.opacity = Math.random() * 0.45 + 0.08;
+            this.size    = Math.random() * 4 + 2;
+            this.speedX  = (Math.random() - 0.5) * 0.18;
+            this.speedY  = Math.random() * 0.24 + 0.08;
+            this.opacity = Math.random() * 0.28 + 0.1;
+            this.color   = ['0,70,67', '171,209,198', '249,188,96'][Math.floor(Math.random() * 3)];
         }
 
         update() {
@@ -87,14 +88,12 @@ function initParticles() {
         }
 
         draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(124,111,247,${this.opacity})`;
-            ctx.fill();
+            ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
+            ctx.fillRect(this.x, this.y, this.size, this.size);
         }
     }
 
-    const particles = Array.from({ length: 90 }, () => new Particle());
+    const particles = Array.from({ length: 48 }, () => new Particle());
 
     (function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -107,7 +106,7 @@ function initTyping() {
     const el = document.getElementById('typed');
     if (!el) return;
 
-    const roles = ['Web Apps.', 'Mobile Apps.', 'AI Systems.', 'Scalable APIs.', 'Cool Things.'];
+    const roles = ['Web Apps.', 'Mobile Apps.', 'AI Workflows.', 'APIs.', 'Useful Products.'];
     let roleIndex = 0, charIndex = 0, isDeleting = false;
 
     function type() {
@@ -266,13 +265,13 @@ function initContactForm() {
                 form           
             );
 
-            showToast('success', '✅ Message sent successfully! I\'ll get back to you soon.');
+            showToast('success', 'Message sent successfully. I\'ll get back to you soon.');
             form.reset();
 
         } catch (err) {
             console.error('EmailJS error:', err);
 
-            showToast('error', '❌ Failed to send. Please email me directly at dhanushkumarr1508@gmail.com');
+            showToast('error', 'Failed to send. Please email me directly at dhanushkumarr1508@gmail.com');
 
         } finally {
             setLoading(false);
