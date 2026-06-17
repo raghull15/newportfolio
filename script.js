@@ -1,6 +1,6 @@
 const EMAILJS_PUBLIC_KEY  = '-cawejxZaLoIR7jlN';
-const EMAILJS_SERVICE_ID  = 'service_sryb28h';  
-const EMAILJS_TEMPLATE_ID = 'template_6tyy85g';  
+const EMAILJS_SERVICE_ID  = 'service_sryb28h';
+const EMAILJS_TEMPLATE_ID = 'template_6tyy85g';
 
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof emailjs !== 'undefined') {
@@ -41,24 +41,25 @@ function initCursor() {
         requestAnimationFrame(lerp);
     })();
 
-    document.querySelectorAll('a, button, .pill, .cert-card, .project-card, .exp-card, .fact-item')
-        .forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                ring.style.width   = '56px';
-                ring.style.height  = '56px';
-                ring.style.opacity = '0.25';
-            });
-            el.addEventListener('mouseleave', () => {
-                ring.style.width   = '36px';
-                ring.style.height  = '36px';
-                ring.style.opacity = '0.45';
-            });
+    const interactables = 'a, button, .pill, .cert-card, .project-card, .exp-card, .fact-item';
+    document.querySelectorAll(interactables).forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            ring.style.width   = '54px';
+            ring.style.height  = '54px';
+            ring.style.opacity = '0.25';
         });
+        el.addEventListener('mouseleave', () => {
+            ring.style.width   = '36px';
+            ring.style.height  = '36px';
+            ring.style.opacity = '0.6';
+        });
+    });
 }
 
 function initParticles() {
     const canvas = document.getElementById('particle-canvas');
     if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
 
     function resize() {
@@ -66,7 +67,7 @@ function initParticles() {
         canvas.height = window.innerHeight;
     }
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
 
     class Particle {
         constructor() { this.reset(true); }
@@ -74,11 +75,11 @@ function initParticles() {
         reset(initial = false) {
             this.x       = Math.random() * canvas.width;
             this.y       = initial ? Math.random() * canvas.height : -4;
-            this.size    = Math.random() * 4 + 2;
-            this.speedX  = (Math.random() - 0.5) * 0.18;
-            this.speedY  = Math.random() * 0.24 + 0.08;
-            this.opacity = Math.random() * 0.28 + 0.1;
-            this.color   = ['0,70,67', '171,209,198', '249,188,96'][Math.floor(Math.random() * 3)];
+            this.size    = Math.random() * 3 + 1.5;
+            this.speedX  = (Math.random() - 0.5) * 0.15;
+            this.speedY  = Math.random() * 0.22 + 0.07;
+            this.opacity = Math.random() * 0.22 + 0.08;
+            this.color   = ['255,45,32', '240,240,240', '200,30,20'][Math.floor(Math.random() * 3)];
         }
 
         update() {
@@ -118,14 +119,18 @@ function initTyping() {
         let delay = isDeleting ? 55 : 105;
 
         if (!isDeleting && charIndex > current.length) {
-            delay = 1800; isDeleting = true;
+            delay      = 1800;
+            isDeleting = true;
         } else if (isDeleting && charIndex < 0) {
-            isDeleting = false; charIndex = 0;
+            isDeleting = false;
+            charIndex  = 0;
             roleIndex  = (roleIndex + 1) % roles.length;
             delay      = 300;
         }
+
         setTimeout(type, delay);
     }
+
     setTimeout(type, 900);
 }
 
@@ -142,6 +147,7 @@ function initNavbar() {
         sections.forEach(sec => {
             if (window.scrollY >= sec.offsetTop - 130) current = sec.id;
         });
+
         navLinks.forEach(a => {
             a.classList.toggle('active', a.getAttribute('href') === '#' + current);
         });
@@ -154,7 +160,6 @@ function initNavbar() {
 function initHamburger() {
     const hamburger   = document.getElementById('hamburger');
     const mobileNav   = document.getElementById('mobileNav');
-    const mobileClose = document.getElementById('mobileClose');
     if (!hamburger || !mobileNav) return;
 
     const openMenu = () => {
@@ -162,6 +167,7 @@ function initHamburger() {
         mobileNav.classList.add('open');
         document.body.style.overflow = 'hidden';
     };
+
     const closeMenu = () => {
         hamburger.classList.remove('open');
         mobileNav.classList.remove('open');
@@ -171,7 +177,7 @@ function initHamburger() {
     hamburger.addEventListener('click', () =>
         hamburger.classList.contains('open') ? closeMenu() : openMenu()
     );
-    if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+
     document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
 }
 
@@ -198,7 +204,6 @@ function initThemeToggle() {
     }
 }
 
-
 function initScrollReveal() {
     const els = document.querySelectorAll('.reveal');
     if (!els.length) return;
@@ -210,7 +215,7 @@ function initScrollReveal() {
                 io.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     els.forEach(el => io.observe(el));
 }
@@ -244,7 +249,7 @@ function initContactForm() {
     if (!form) return;
 
     form.addEventListener('submit', async (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
         if (!form.checkValidity()) {
             form.reportValidity();
@@ -259,35 +264,29 @@ function initContactForm() {
                 throw new Error('EmailJS SDK not loaded.');
             }
 
-            await emailjs.sendForm(
-                EMAILJS_SERVICE_ID,
-                EMAILJS_TEMPLATE_ID,
-                form           
-            );
+            await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
 
-            showToast('success', 'Message sent successfully. I\'ll get back to you soon.');
+            showToast('success', "Message sent. I'll get back to you soon.");
             form.reset();
 
         } catch (err) {
             console.error('EmailJS error:', err);
-
-            showToast('error', 'Failed to send. Please email me directly at dhanushkumarr1508@gmail.com');
+            showToast('error', 'Failed to send. Email me directly at dhanushkumarr1508@gmail.com');
 
         } finally {
             setLoading(false);
         }
     });
 
-
     function setLoading(on) {
-        submitBtn.disabled          = on;
-        btnText.style.display       = on ? 'none'         : 'inline-flex';
-        btnSpinner.style.display    = on ? 'inline-flex'  : 'none';
+        submitBtn.disabled       = on;
+        btnText.style.display    = on ? 'none'        : 'inline-flex';
+        btnSpinner.style.display = on ? 'inline-flex' : 'none';
     }
 
     function showToast(type, msg) {
         toast.textContent = msg;
-        toast.className   = 'form-toast ' + type; 
+        toast.className   = 'form-toast ' + type;
         toast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         setTimeout(hideToast, 7000);
     }
