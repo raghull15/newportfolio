@@ -14,15 +14,15 @@
 </head>
 
 <body>
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="grain-overlay"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <canvas id="particle-canvas"></canvas>
 
     <nav id="navbar">
         <a href="#home" class="nav-logo">DK<span>.</span></a>
 
-        <ul class="nav-links">
+        <ul class="nav-links" id="navList">
             <li><a href="#home"           class="nav-link active">Home</a></li>
             <li><a href="#about"          class="nav-link">About</a></li>
             <li><a href="#experience"     class="nav-link">Experience</a></li>
@@ -30,6 +30,7 @@
             <li><a href="#skills"         class="nav-link">Skills</a></li>
             <li><a href="#certifications" class="nav-link">Certifications</a></li>
             <li><a href="#contact"        class="nav-link">Contact</a></li>
+            <li class="nav-indicator" id="navIndicator" aria-hidden="true"></li>
         </ul>
 
         <div class="nav-right">
@@ -76,11 +77,11 @@
             </p>
 
             <div class="hero-actions">
-                <a href="#contact" class="btn-primary">
+                <a href="#contact" class="btn-primary magnetic">
                     <i class="fa-solid fa-paper-plane"></i> Hire Me
                 </a>
                 <a href="https://drive.google.com/file/d/1qJZ3F_IBfDo90P61AwZTROmqu8WiMrIB/view?usp=sharing"
-                   target="_blank" rel="noopener" class="btn-outline">
+                   target="_blank" rel="noopener" class="btn-outline magnetic">
                     <i class="fa-solid fa-download"></i> Download CV
                 </a>
             </div>
@@ -128,7 +129,7 @@
                 <p class="reveal reveal-d3">
                     I'm a Software Engineer and MCA graduate with professional experience across Flutter
                     mobile development, full-stack web engineering, and AI-powered application platforms.
-                    Interned as a Flutter Developer at Fellow Founder and as a Software Developer at K-Loop.in.
+                    Interned as a Flutter Developer at Fellow Founder and as a Software Developer at KLoop.
                 </p>
                 <p class="reveal reveal-d4">
                     My work covers RAG-based AI chatbots, blockchain distribution systems, community resource
@@ -154,7 +155,7 @@
                     </div>
                 </div>
                 <div class="reveal reveal-d6" style="margin-top:2rem">
-                    <a href="#contact" class="btn-primary">
+                    <a href="#contact" class="btn-primary magnetic">
                         <i class="fa-solid fa-arrow-right"></i> Let's Connect
                     </a>
                 </div>

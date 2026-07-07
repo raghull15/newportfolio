@@ -7,54 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
         emailjs.init(EMAILJS_PUBLIC_KEY);
     }
 
-    initCursor();
     initParticles();
     initTyping();
     initNavbar();
+    initNavIndicator();
     initHamburger();
     initThemeToggle();
     initScrollReveal();
+    initScrollProgress();
     initSkillBars();
+    initMagnetic();
     initContactForm();
 });
-
-function initCursor() {
-    const dot  = document.getElementById('cursorDot');
-    const ring = document.getElementById('cursorRing');
-    if (!dot || !ring) return;
-
-    let mouseX = 0, mouseY = 0;
-    let ringX  = 0, ringY  = 0;
-
-    document.addEventListener('mousemove', e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        dot.style.left = mouseX + 'px';
-        dot.style.top  = mouseY + 'px';
-    });
-
-    (function lerp() {
-        ringX += (mouseX - ringX) * 0.13;
-        ringY += (mouseY - ringY) * 0.13;
-        ring.style.left = ringX + 'px';
-        ring.style.top  = ringY + 'px';
-        requestAnimationFrame(lerp);
-    })();
-
-    const interactables = 'a, button, .pill, .cert-card, .project-card, .exp-card, .fact-item';
-    document.querySelectorAll(interactables).forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            ring.style.width   = '54px';
-            ring.style.height  = '54px';
-            ring.style.opacity = '0.25';
-        });
-        el.addEventListener('mouseleave', () => {
-            ring.style.width   = '36px';
-            ring.style.height  = '36px';
-            ring.style.opacity = '0.6';
-        });
-    });
-}
 
 function initParticles() {
     const canvas = document.getElementById('particle-canvas');
@@ -151,10 +115,41 @@ function initNavbar() {
         navLinks.forEach(a => {
             a.classList.toggle('active', a.getAttribute('href') === '#' + current);
         });
+
+        moveNavIndicator();
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+}
+
+// Sliding red indicator that glides under whichever nav link is active/hovered
+function initNavIndicator() {
+    const navList = document.getElementById('navList');
+    if (!navList) return;
+
+    navList.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('mouseenter', () => moveNavIndicator(link));
+    });
+
+    navList.addEventListener('mouseleave', () => moveNavIndicator());
+
+    window.addEventListener('resize', () => moveNavIndicator(), { passive: true });
+}
+
+function moveNavIndicator(targetLink) {
+    const navList     = document.getElementById('navList');
+    const indicator   = document.getElementById('navIndicator');
+    if (!navList || !indicator) return;
+
+    const link = targetLink || navList.querySelector('.nav-link.active') || navList.querySelector('.nav-link');
+    if (!link) return;
+
+    const listRect = navList.getBoundingClientRect();
+    const linkRect = link.getBoundingClientRect();
+
+    indicator.style.width     = linkRect.width + 'px';
+    indicator.style.transform = `translateX(${linkRect.left - listRect.left}px)`;
 }
 
 function initHamburger() {
@@ -220,6 +215,23 @@ function initScrollReveal() {
     els.forEach(el => io.observe(el));
 }
 
+// Thin red rail at the very top of the page that fills as you scroll down
+function initScrollProgress() {
+    const bar = document.getElementById('scrollProgress');
+    if (!bar) return;
+
+    function onScroll() {
+        const scrollTop    = window.scrollY;
+        const docHeight    = document.documentElement.scrollHeight - window.innerHeight;
+        const pct          = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width    = pct + '%';
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    onScroll();
+}
+
 function initSkillBars() {
     const fills = document.querySelectorAll('.skill-bar-fill');
     if (!fills.length) return;
@@ -238,6 +250,27 @@ function initSkillBars() {
             }
         });
     }, { threshold: 0.2 }).observe(skillsSection);
+}
+
+// Buttons nudge slightly toward the cursor on hover — desktop only, and
+// automatically skipped on touch devices / reduced-motion.
+function initMagnetic() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouch        = window.matchMedia('(hover: none)').matches;
+    if (prefersReduced || isTouch) return;
+
+    document.querySelectorAll('.magnetic').forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x    = e.clientX - rect.left - rect.width / 2;
+            const y    = e.clientY - rect.top  - rect.height / 2;
+            el.style.transform = `translate(${x * 0.18}px, ${y * 0.35}px)`;
+        });
+
+        el.addEventListener('mouseleave', () => {
+            el.style.transform = 'translate(0, 0)';
+        });
+    });
 }
 
 function initContactForm() {
