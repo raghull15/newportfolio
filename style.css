@@ -532,20 +532,17 @@ section {
 }
 
 .section-hero::after {
-    content: '';
+    content: "";
     position: absolute;
-    width: clamp(180px, 30vw, 380px);
-    height: clamp(180px, 30vw, 380px);
-    right: 7%;
-    bottom: 9%;
+    width: 420px;
+    height: 420px;
+    right: 8%;
+    top: 20%;
     background: var(--red);
-    border: var(--border-thick);
-    box-shadow: var(--shadow-lg);
-    transform: rotate(-8deg);
+    border: 6px solid var(--ink);
+    box-shadow: 10px 10px 0 var(--ink);
     opacity: 0.08;
-    pointer-events: none;
-    z-index: 1;
-    animation: driftRotate 12s ease-in-out infinite;
+    animation: driftRotate 8s linear infinite;
 }
 
 .hero-inner {
@@ -1588,13 +1585,12 @@ footer {
 }
 
 @keyframes driftRotate {
-    0%,
-    100% {
-        transform: rotate(-8deg) translateY(0);
+    from {
+        transform: rotate(0deg);
     }
 
-    50% {
-        transform: rotate(-4deg) translateY(-14px);
+    to {
+        transform: rotate(360deg);
     }
 }
 
